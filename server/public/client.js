@@ -22,6 +22,8 @@ let numbersObject = {
     firstNumber: $('#first-number').val(),
     secondNumber: $('#second-number').val()
 };
+console.log(numbersObject);
+// $('#visualMath').append(`${numbersObject.firstNumber}`)
 
 $('#first-number').val('');
 $('#second-number').val('');
@@ -39,12 +41,14 @@ $.ajax({
 
 function addMeUp(){
     console.log('In add Me up!')
+    $('#first-number').val();
+    $('#second-number').val();
+    // $('#visualMath').append(`${numbersObject.firstNumber}`)
 }
 
 function subtractMeDown(){
     console.log('In subtract me down!');
 }
-
 
 function multiplyMeUp(){
     console.log('In multiply me up!');
