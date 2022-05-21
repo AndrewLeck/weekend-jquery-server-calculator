@@ -29,12 +29,17 @@ app.post('/totalNumber', (req, res) =>{
     console.log("should give us the answer", req.body)
     console.log('here is the answer!', answer);
     res.send({answer: req.body});
+    
 })
 
 
 app.get('/totalNumber', (req, res) =>{
     console.log('In total number GET');
     res.send(numbers)
+})
+app.get('/arrayList', (req, res) => {
+    console.log('in the POST');
+    res.send(numbers);
 })
 
 function letsDoSomeThings(obj){ //req.body = obj 

@@ -5,7 +5,7 @@ let mathSymbol;
 
 function readyNow(){
  console.log('JQ LOADED');
-
+rednerToDom();
  $('#total-number').on('click', getTotalNumber);
  $('#addition').on('click', addMeUp);
  $('#subtraction').on('click', subtractMeDown);
@@ -35,7 +35,12 @@ $.ajax({
     data: numbersObject // this = req.body ( sending to server)
   }).then((response)=>{
      console.log(" In the then statment", response); 
+     console.log('does this work?', response.answer.answer)
+     $('#calculationAnswer').text(response.answer.answer)
+    
     console.log('Posted!')
+    rednerToDom()
+   
   }
   
     
@@ -65,3 +70,21 @@ function divideMeInHalf(){
     console.log('In divide me in half');
     mathSymbol = '/'
 }
+
+function rednerToDom(array){
+    $.ajax({
+        url: '/arrayList',
+        method: 'GET',
+      }).then((response)=>{
+         console.log(response);
+         $('#history').empty();
+        for(let number of response){
+           $('#history').append(`<li>${number.firstNumber} ${number.operator} ${number.secondNumber} = ${number.answer}</li>`) 
+        }
+      })
+
+}
+  
+// function getArrayInfo(){
+// for(let i=0; i < Array.length)
+// }
